@@ -13,7 +13,7 @@ int main()
   char option[15];
   char* ptr = option;
 
-  printf("MULTITOOL C by DS10320\n");
+  printf("MULTITOOL C by DS10320/@geospachos\n");
   printf("Enter your option (Hint: Type Help for Help)\n");
   mainmenu:
   printf(">");
