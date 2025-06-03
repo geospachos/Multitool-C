@@ -1,23 +1,24 @@
 #include <stdlib.h>
 #include "devmode.h"
 #include "functions.h"
-#include "string.h"
+#include <string.h>
 
 void devMode()
 {
-  char optionDev[50];
+  char optionDev[35];
   system("clear");
   printf("devmode Activated (Type help for Help)\n");
   devmenu:
   printf(">");
-  scanf("%s\n", optionDev);
+  scanf("%s", optionDev);
 
   if(strcmp(optionDev, "help") == 0)
   {
     printf("calc: Opens the calculator\n");
     printf("mem_address-(variable here): Prints the memory address of a variable\n");
-    printf("debug_(file here): Opens NeoVim for the selected file");
-    printf("\nclear: Clears the screen\n");
+    printf("debug_(file here): Opens a file of the multitool in Neovim\n");
+    printf("cat_(file here): Displays the content of a file\n");
+    printf("clear: Clears the screen\n");
     goto devmenu;
 
   }
@@ -38,21 +39,48 @@ void devMode()
   }
   else if(strcmp(optionDev, "debug_main.c") == 0)
   {
-    exit(0);
     system("nvim source/main.c");
   }
   else if(strcmp(optionDev, "debug_calc.c") == 0)
   {
-    exit(0);
     system("nvim source/calc.c");
+  }
+  else if(strcmp(optionDev, "debug_devmode.c") == 0)
+  {
+    system("nvim source/devmode.c");
   }
   else if(strcmp(optionDev, "exit") == 0)
   {
     exit(0);
   }
-  else 
+  else if(strcmp(optionDev, "cat_main.c") == 0)
   {
-   printf("Unknow Command");
+    system("cat source/main.c");
+    goto devmenu;
+  }
+  else if(strcmp(optionDev, "cat_calc.c") == 0)
+  {
+    system("cat source/calc.c");
+    goto devmenu;
+  }
+  else if(strcmp(optionDev, "cat_devmode.c") == 0)
+  {
+    system("cat source/devmode.c");
+    goto devmenu;
+  }
+  else if(strcmp(optionDev, "cat_functions.h") == 0)
+  {
+    system("cat source/functions.h");
+    goto devmenu;
+  }
+  else if(strcmp(optionDev, "cat_devmode.h") == 0)
+  {
+    system("cat source/devmode.h");
+    goto devmenu;
+  }
+  else
+  {
+   printf("Unknown Command\n");
     goto devmenu;
   }
 }
